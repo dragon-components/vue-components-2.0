@@ -1,0 +1,224 @@
+@import 'base.less';
+
+@menu-prefix-cls: ~"@{css-prefix}menu";
+@menu-dropdown-item-prefix-cls: ~"@{menu-prefix-cls}-horizontal .@{menu-prefix-cls}-submenu .@{select-dropdown-prefix-cls} .@{menu-prefix-cls}-item";
+
+.@{menu-prefix-cls} {
+    &-horizontal{
+        &.@{menu-prefix-cls}-light{
+            &:after{
+                content: '';
+                display: block;
+                width: 100%;
+                height: 1px;
+                background: @znlh-btn-background-gray;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
+    &-vertical{
+        &.@{menu-prefix-cls}-light{
+            &:after{
+                content: '';
+                display: block;
+                width: 1px;
+                height: 100%;
+                background: @znlh-btn-background-gray;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                z-index: 1;
+            }
+        }
+    }
+
+    &-light{
+        background: @znlh-white;
+    }
+
+
+    &-item{
+        &::after{
+            content: '';
+            width: 100%;
+            display: block;
+            height: 1px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: lighten(@znlh-btn-background-gray,12%);
+            // background-color: red;
+        }
+    }
+   
+   
+    
+  
+    &-light&-horizontal &-item, &-light&-horizontal &-submenu{
+        height: inherit;
+        line-height: inherit;
+        border-bottom: 2px solid transparent;
+        color: @text-color;
+        &-active, &:hover{
+            color: @primary-color;
+            border-bottom: 2px solid @primary-color;
+        }
+    }
+
+    
+    &-primary&-horizontal &-item, &-primary&-horizontal &-submenu{
+        color: @znlh-white;
+        &-active, &:hover{
+            background: lighten(@znlh-secondary,10%);
+        }
+    }
+
+
+
+    // vertical
+    &-vertical &-item,
+    &-vertical &-submenu-title
+    {
+      
+        &:hover{
+            background: lighten(@znlh-secondary,25%);
+            color: @znlh-primary-text;
+        }
+        &::after{
+            content: '';
+            width: 100%;
+            display: block;
+            height: 1px;
+            position: absolute;
+            top: 0px;
+            left: 0;
+            background-color: fadeout(@znlh-background,80%);
+        }
+    }
+
+
+    &-light&-vertical &-item{
+        &-active:not(.@{menu-prefix-cls}-submenu){
+            color: @znlh-primary-text;
+            background: lighten(@znlh-secondary,43%);
+            z-index: 2;
+            &:after{
+                content: '';
+                display: block;
+                width: 2px;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                background: @primary-color;
+            }
+        }
+    }
+
+    &-light&-vertical &-child-item-active > &-submenu-title{
+        font-weight: 600;   
+        i{
+            font-weight: 600;   
+            color: lighten(@znlh-secondary,10%);
+        }
+        border-left: 2px solid lighten(@znlh-secondary,10%);
+    }
+    
+    &-dark&-vertical &-child-item-active > &-submenu-title{
+        color: #fff;
+    }
+    
+    &-light&-vertical &-child-item-active > ul{
+        background: fadeout(@znlh-background,80%);
+        li{
+            &::after{
+                width: 0;
+            }
+        }
+        
+    }
+    &-light&-vertical &-opened &{
+        background: fadeout(@znlh-background,80%);
+        li{
+            &::after{
+                width: 0;
+            }
+        }
+    }
+ 
+}
+@layout-prefix-cls: ~"@{css-prefix}layout";
+
+.@{layout-prefix-cls} {
+    &-sider {
+        background: @znlh-white;
+        box-shadow: 1px 0px 4px 0px rgba(0, 0, 0, 0.16);
+        width: 64px;
+    }
+    
+}
+
+@checkbox-prefix-cls: ~"@{css-prefix}checkbox";
+.@{checkbox-prefix-cls} {
+    border-color: @znlh-base-border;
+    &-checked &-inner{
+        background-color: @znlh-secondary;
+        border-color: @znlh-base-border;
+        // &:focus{
+
+        // }
+    }
+    &-wrapper+&-wrapper{
+        margin-left: 30px;
+       
+    }
+    &-wrapper{
+        .ivu-checkbox{
+            margin-right: 10px;
+        }
+    }
+    
+}
+
+//input
+@input-prefix-cls: ~"@{css-prefix}input";
+
+.@{input-prefix-cls} {
+    padding: 10px 13px;
+    &-wrapper:hover{
+        border-color: @znlh-primary;
+    }
+}
+
+// select
+@select-dropdown-prefix-cls: ~"@{css-prefix}select-dropdown";
+@transfer-no-max-height: ~"@{css-prefix}transfer-no-max-height";
+
+.@{select-dropdown-prefix-cls} {
+    .ivu-select-item:hover{
+        background: @znlh-btn-background-gray;
+    }
+    .ivu-select-item-focus{
+       font-weight: 800;
+    }
+}
+
+@card-prefix-cls: ~"@{css-prefix}card";
+
+.@{card-prefix-cls}{
+    &-head{
+        background: fadeout(@znlh-background,90%);
+    }
+}
+
+@modal-prefix-cls: ~"@{css-prefix}modal";
+@confirm-prefix-cls: ~"@{css-prefix}modal-confirm";
+
+.@{modal-prefix-cls} {
+    &-header{
+        background: fadeout(@znlh-background,90%);
+    }
+}

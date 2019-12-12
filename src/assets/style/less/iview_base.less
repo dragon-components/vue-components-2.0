@@ -1,0 +1,81 @@
+/**
+ * @Author: fuchunyao
+ * @Date: 2019-6-18
+ * @Desc: iview 全局less变量覆盖
+ */
+ @import '~iview/src/styles/index.less';
+ @import 'base.less';
+
+
+// Color
+@primary-color: @znlh-primary;
+@info-color: @znlh-secondary;
+@success-color: @znlh-success;
+@warning-color: @znlh-warning;
+@error-color: @znlh-danger;
+@link-color: @znlh-link;
+@body-background: @znlh-white;
+@font-family: @znlh-font;
+
+//font
+@text-color: @znlh-primary-text;
+
+// Button
+// @btn-padding-base: @znlh-btn-padding-base;
+// @btn-padding-small:@znlh-btn-padding-small;
+@btn-font-size: @znlh-btn-font-size;
+// @btn-border-radius: @znlh-btn-border-radius;
+// @btn-border-radius-small: @znlh-btn-border-radius;
+
+@btn-default-color: @znlh-regular-text;
+@btn-default-bg: @znlh-white;
+@btn-default-border: @znlh-base-border;
+
+@btn-primary-color: @znlh-white;
+@btn-primary-bg: @znlh-primary;
+
+@table-thead-bg               : fadeout(@znlh-background,90%);
+@table-td-stripe-bg           : fadeout(@znlh-background,90%);
+@table-td-hover-bg            : fadeout(@znlh-primary,90%);
+
+
+.btn-default() {
+    .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
+
+    &:hover
+    //&:focus
+    {
+        .button-color(@znlh-regular-text; @znlh-btn-background-gray; @znlh-base-border);
+    }
+    &:active,
+    &.active {
+        .button-color(shade(@primary-color, 5%); white; shade(@primary-color, 5%));
+    }
+    .active-btn-color(@primary-color);
+}
+
+.button-variant(@color; @background; @border) {
+    .button-color(@color; @background; @border);
+
+    &:hover
+    //&:focus
+    {
+        .button-color(@znlh-danger; shade(@background, 20%); tint(@border, 20%));
+    }
+    &:active,
+    &.active {
+        .button-color(@znlh-danger; shade(@background, 20%); tint(@border, 20%));
+    }
+
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        &,
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+            .button-color(@btn-disable-color; @btn-disable-bg; @btn-disable-border);
+        }
+    }
+}

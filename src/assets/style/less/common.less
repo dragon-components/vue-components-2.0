@@ -1,0 +1,54 @@
+@import 'iview_base.less';
+
+.content{
+    padding: 20px;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.button-variant(@color; @background; @border) {
+    .button-color(@color; @background; @border);
+
+    &:hover
+    //&:focus
+    {
+        .button-color(@znlh-danger; shade(@background, 20%); tint(@border, 20%));
+    }
+    &:active,
+    &.active {
+        .button-color(shade(@color, 5%); shade(@background, 5%); shade(@background, 5%));
+    }
+
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        &,
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+            .button-color(@btn-disable-color; @btn-disable-bg; @btn-disable-border);
+        }
+    }
+}
+// 复选框
+.ivu-table-header 
+{
+    th .ivu-table-cell {
+        display: block;
+        word-wrap: normal;
+    }
+}
+// 表头
+.ivu-table-header {
+    background-color: ''
+    
+}
+// 冻结表头
+.ivu-table-fixed-header {
+    background-color: #fff
+}
+// 列表卡片间距
+.ivu-card:last-child {
+    margin-top: 20px
+}
